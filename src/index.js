@@ -1,17 +1,55 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';
+import ShotSelector from './ShotSelector';
+import cricket from './cricket.jpg'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+class App extends React.Component {
+
+  constructor(props){
+    super(props)
+    this.state = { resultSide: null }
+  }
+
+  handleDropdownChange = (value) => {
+    this.setState({resultSide: value});
+  };
+
+  componentDidMount() {
+    // Update the state after component is mounted
+    setTimeout(() => {
+      this.setState({ resultSide: "No Side"});
+    }, 2000); // Update after 2 seconds (adjust as needed)
+  }
+  
+  render() {
+  console.log(this.state.resultSide)
+  return (
+    <div className="ui container">
+      <div class="ui inverted segment">
+          <div class="ui inverted secondary menu">
+
+            <label className="ui huge blue label">Off OR Leg</label>
+            
+          </div>
+    </div>
+      <ShotSelector onDropdownChange={this.handleDropdownChange}/>  
+      <br/>
+      <div><h1 className="ui header">Pitch Side: <label className="ui huge green label">{this.state.resultSide}</label></h1></div>
+      <br/>
+      <div>
+        <img className="ui big fluid image" src={cricket}/>
+      <div/>
+    </div>
+  </div>
+
+  );
+}
+}
+
+ReactDOM.render(
+  <App/>,
+  document.querySelector("#root")
+)
+
