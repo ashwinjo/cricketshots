@@ -1,4 +1,5 @@
 import requests
+import matplotlib.pyplot as plt
 
 COOKIES = {
         "my11c-uid": "d1134d3a-1011-70d4-6a43-7653c9269d9a",
@@ -33,8 +34,6 @@ def get_team_names(game_number="4"):
     return players
 
 def get_other_player_stats(game_number="4"):
-    import requests
-
     players = get_team_names()
     for team_id, player in players.items():
         team_name, social_id = player.split("_")
@@ -44,7 +43,7 @@ def get_other_player_stats(game_number="4"):
     return xfer_stats
 
 def show_data(data):
-    import matplotlib.pyplot as plt
+    
     # Extracting names and values
 
     # Extracting names and values
