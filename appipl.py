@@ -65,8 +65,8 @@ def show_data(data):
 
     # Labels and title
     plt.xlabel("Teams", fontsize=12)
-    plt.ylabel("Score", fontsize=12)
-    plt.title("Scores by Team (Descending Order)", fontsize=14)
+    plt.ylabel("Transfers Left", fontsize=12)
+    plt.title("Transfers by Team (Descending Order)", fontsize=14)
     plt.xticks(rotation=45, ha="right")
 
     # Show plot
